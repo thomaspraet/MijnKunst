@@ -7,7 +7,7 @@
 namespace MijnKunst.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstMigration : Migration
+    public partial class initialmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -41,6 +41,35 @@ namespace MijnKunst.DataAccess.Migrations
                     table.PrimaryKey("PK_Technics", x => x.Id);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Artworks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Dimensions = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TechnicId = table.Column<int>(type: "int", nullable: false),
+                    ArtistId = table.Column<int>(type: "int", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Artworks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Artworks_Artists_ArtistId",
+                        column: x => x.ArtistId,
+                        principalTable: "Artists",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Artworks_Technics_TechnicId",
+                        column: x => x.TechnicId,
+                        principalTable: "Technics",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Artists",
                 columns: new[] { "Id", "FirstName", "LastName", "PlaceOfBirth", "YearOfBirth" },
@@ -62,7 +91,8 @@ namespace MijnKunst.DataAccess.Migrations
                     { 14, "Carla", "Heuvinck", "", "" },
                     { 15, "", "MarieAnge", "Nieuwpoort", "1963" },
                     { 16, "Martina", "Mory", "", "" },
-                    { 17, "Jacky", "Zegers", "", "" }
+                    { 17, "Jacky", "Zegers", "", "" },
+                    { 18, "Pieter", "De Poortere", "Gent", "1976" }
                 });
 
             migrationBuilder.InsertData(
@@ -98,11 +128,24 @@ namespace MijnKunst.DataAccess.Migrations
                     { 26, "Resin" },
                     { 27, "Zeefdruk" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Artworks_ArtistId",
+                table: "Artworks",
+                column: "ArtistId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Artworks_TechnicId",
+                table: "Artworks",
+                column: "TechnicId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Artworks");
+
             migrationBuilder.DropTable(
                 name: "Artists");
 

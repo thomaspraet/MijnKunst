@@ -185,6 +185,14 @@ namespace MijnKunst.DataAccess.Migrations
                             LastName = "Zegers",
                             PlaceOfBirth = "",
                             YearOfBirth = ""
+                        },
+                        new
+                        {
+                            Id = 18,
+                            FirstName = "Pieter",
+                            LastName = "De Poortere",
+                            PlaceOfBirth = "Gent",
+                            YearOfBirth = "1976"
                         });
                 });
 
@@ -220,6 +228,44 @@ namespace MijnKunst.DataAccess.Migrations
                     b.HasIndex("TechnicId");
 
                     b.ToTable("Artworks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ArtistId = 18,
+                            Dimensions = "236 x 206",
+                            ImageUrl = "",
+                            TechnicId = 12,
+                            Title = "Geisha Hoerke"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ArtistId = 9,
+                            Dimensions = "195 x 200",
+                            ImageUrl = "",
+                            TechnicId = 27,
+                            Title = "De zeven leeftijden van de mens"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ArtistId = 7,
+                            Dimensions = "296 x 207",
+                            ImageUrl = "",
+                            TechnicId = 2,
+                            Title = "zonder titel"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ArtistId = 7,
+                            Dimensions = "385 x 290",
+                            ImageUrl = "",
+                            TechnicId = 27,
+                            Title = "zonder titel"
+                        });
                 });
 
             modelBuilder.Entity("MijnKunst.Models.Technic", b =>

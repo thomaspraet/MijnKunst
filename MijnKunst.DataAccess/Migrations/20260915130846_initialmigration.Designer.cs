@@ -11,8 +11,8 @@ using MijnKunst.web.Data;
 namespace MijnKunst.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260915115100_AddArtworkToDb")]
-    partial class AddArtworkToDb
+    [Migration("20260915130846_initialmigration")]
+    partial class initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -188,6 +188,14 @@ namespace MijnKunst.DataAccess.Migrations
                             LastName = "Zegers",
                             PlaceOfBirth = "",
                             YearOfBirth = ""
+                        },
+                        new
+                        {
+                            Id = 18,
+                            FirstName = "Pieter",
+                            LastName = "De Poortere",
+                            PlaceOfBirth = "Gent",
+                            YearOfBirth = "1976"
                         });
                 });
 
@@ -199,6 +207,9 @@ namespace MijnKunst.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("ArtistId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Dimensions")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -206,11 +217,18 @@ namespace MijnKunst.DataAccess.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TechnicId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ArtistId");
+
+                    b.HasIndex("TechnicId");
 
                     b.ToTable("Artworks");
                 });
@@ -367,6 +385,25 @@ namespace MijnKunst.DataAccess.Migrations
                             Id = 27,
                             Name = "Zeefdruk"
                         });
+                });
+
+            modelBuilder.Entity("MijnKunst.Models.Artwork", b =>
+                {
+                    b.HasOne("MijnKunst.Models.Artist", "Artist")
+                        .WithMany()
+                        .HasForeignKey("ArtistId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MijnKunst.Models.Technic", "Technic")
+                        .WithMany()
+                        .HasForeignKey("TechnicId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Artist");
+
+                    b.Navigation("Technic");
                 });
 #pragma warning restore 612, 618
         }

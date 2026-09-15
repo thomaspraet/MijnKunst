@@ -36,7 +36,8 @@ namespace MijnKunst.web.Data
                 new Artist { Id = 14, FirstName = "Carla", LastName = "Heuvinck", PlaceOfBirth = "", YearOfBirth = "" },
                 new Artist { Id = 15, FirstName = "", LastName = "MarieAnge", PlaceOfBirth = "Nieuwpoort", YearOfBirth = "1963" },
                 new Artist { Id = 16, FirstName = "Martina", LastName = "Mory", PlaceOfBirth = "", YearOfBirth = "" },
-                new Artist { Id = 17, FirstName = "Jacky", LastName = "Zegers", PlaceOfBirth = "", YearOfBirth = "" }
+                new Artist { Id = 17, FirstName = "Jacky", LastName = "Zegers", PlaceOfBirth = "", YearOfBirth = "" },
+                new Artist { Id = 18, FirstName = "Pieter", LastName = "De Poortere", PlaceOfBirth = "Gent", YearOfBirth = "1976" }
 
             );
 
@@ -49,7 +50,7 @@ namespace MijnKunst.web.Data
                     Title = "Geisha Hoerke",
                     Dimensions = "236 x 206",
                     ImageUrl = "",
-                    ArtistId = 20,
+                    ArtistId = 18,
                     TechnicId = 12
 
 
@@ -81,7 +82,9 @@ namespace MijnKunst.web.Data
                     Id = 4,
                     Title = "zonder titel",
                     Dimensions = "385 x 290",
-                    ImageUrl = ""
+                    ImageUrl = "",
+                    ArtistId = 7,
+                    TechnicId = 27
 
                 }
 
