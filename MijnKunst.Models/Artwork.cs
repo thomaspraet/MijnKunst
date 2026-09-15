@@ -18,6 +18,13 @@ namespace MijnKunst.Models
         [Display(Name = "Afmetingen in mm, H x B")]
         public string Dimensions { get; set; } = string.Empty;
 
+        public int TechnicId { get; set; }
+        [ForeignKey("TechnicId")]
+        public Technic? Technic { get; set; }
+
+        public int ArtistId { get; set; }
+        [ForeignKey("ArtistId")]
+        public Artist? Artist { get; set; }
 
 
         [ValidateNever]

@@ -7,7 +7,7 @@
 namespace MijnKunst.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class InitaialMigration : Migration
+    public partial class FirstMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,21 +26,6 @@ namespace MijnKunst.DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Artists", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Artworks",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Dimensions = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Artworks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -78,17 +63,6 @@ namespace MijnKunst.DataAccess.Migrations
                     { 15, "", "MarieAnge", "Nieuwpoort", "1963" },
                     { 16, "Martina", "Mory", "", "" },
                     { 17, "Jacky", "Zegers", "", "" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Artworks",
-                columns: new[] { "Id", "Dimensions", "ImageUrl", "Title" },
-                values: new object[,]
-                {
-                    { 1, "236 x 206", "", "Geisha Hoerke" },
-                    { 2, "195 x 200", "", "De zeven leeftijden van de mens" },
-                    { 3, "296 x 207", "", "zonder titel" },
-                    { 4, "385 x 290", "", "zonder titel" }
                 });
 
             migrationBuilder.InsertData(
@@ -131,9 +105,6 @@ namespace MijnKunst.DataAccess.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Artists");
-
-            migrationBuilder.DropTable(
-                name: "Artworks");
 
             migrationBuilder.DropTable(
                 name: "Technics");

@@ -11,8 +11,8 @@ using MijnKunst.web.Data;
 namespace MijnKunst.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260915111129_InitaialMigration")]
-    partial class InitaialMigration
+    [Migration("20260915115100_AddArtworkToDb")]
+    partial class AddArtworkToDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -213,36 +213,6 @@ namespace MijnKunst.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Artworks");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Dimensions = "236 x 206",
-                            ImageUrl = "",
-                            Title = "Geisha Hoerke"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Dimensions = "195 x 200",
-                            ImageUrl = "",
-                            Title = "De zeven leeftijden van de mens"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Dimensions = "296 x 207",
-                            ImageUrl = "",
-                            Title = "zonder titel"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Dimensions = "385 x 290",
-                            ImageUrl = "",
-                            Title = "zonder titel"
-                        });
                 });
 
             modelBuilder.Entity("MijnKunst.Models.Technic", b =>

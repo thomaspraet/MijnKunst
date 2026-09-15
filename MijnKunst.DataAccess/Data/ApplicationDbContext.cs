@@ -48,24 +48,33 @@ namespace MijnKunst.web.Data
                     Id = 1,
                     Title = "Geisha Hoerke",
                     Dimensions = "236 x 206",
-                    ImageUrl = ""
-                    
+                    ImageUrl = "",
+                    ArtistId = 20,
+                    TechnicId = 12
+
+
                 },
                 new Artwork
                 {
                     Id = 2,
                     Title = "De zeven leeftijden van de mens",
                     Dimensions = "195 x 200",
-                    ImageUrl = ""
-                    
+                    ImageUrl = "",
+                    ArtistId = 9,
+                    TechnicId = 27
+
+
                 },
                 new Artwork
                 {
                     Id = 3,
                     Title = "zonder titel",
                     Dimensions = "296 x 207",
-                    ImageUrl = ""
-                    
+                    ImageUrl = "",
+                    ArtistId = 7,
+                    TechnicId = 2
+
+
                 },
                 new Artwork
                 {
@@ -73,7 +82,7 @@ namespace MijnKunst.web.Data
                     Title = "zonder titel",
                     Dimensions = "385 x 290",
                     ImageUrl = ""
-                    
+
                 }
 
             );

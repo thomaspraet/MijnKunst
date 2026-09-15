@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MijnKunst.web.Data;
 
@@ -10,9 +11,11 @@ using MijnKunst.web.Data;
 namespace MijnKunst.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260915114744_FirstMigration")]
+    partial class FirstMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -188,40 +191,6 @@ namespace MijnKunst.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MijnKunst.Models.Artwork", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ArtistId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Dimensions")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TechnicId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArtistId");
-
-                    b.HasIndex("TechnicId");
-
-                    b.ToTable("Artworks");
-                });
-
             modelBuilder.Entity("MijnKunst.Models.Technic", b =>
                 {
                     b.Property<int>("Id")
@@ -374,25 +343,6 @@ namespace MijnKunst.DataAccess.Migrations
                             Id = 27,
                             Name = "Zeefdruk"
                         });
-                });
-
-            modelBuilder.Entity("MijnKunst.Models.Artwork", b =>
-                {
-                    b.HasOne("MijnKunst.Models.Artist", "Artist")
-                        .WithMany()
-                        .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MijnKunst.Models.Technic", "Technic")
-                        .WithMany()
-                        .HasForeignKey("TechnicId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Artist");
-
-                    b.Navigation("Technic");
                 });
 #pragma warning restore 612, 618
         }
