@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Technic>
+
+<div class="container px-5 py-4">
+    <div class="card border shadow-sm overflow-hidden">
+        <div class="card-header text-white py-3 px-4 d-flex align-items-center justify-content-between" style="background: linear-gradient(to right, #84b133, #515c6a,#dfe057);">
+            <div>
+                <h5 class="mb-0 fw-bold"><i class="bi bi-grid me-2"></i>Technieken</h5>
+                <p class="mb-0 small" style="color: #FFF;">Beheer technieken</p>
+            </div>
+            <a asp-controller="Technic" asp-action="Create" class="btn btn-sm btn-outline-light fw-semibold d-inline-flex align-items-center gap-1">
+                <i class="bi bi-plus-lg"></i> Nieuwe techniek
+            </a>
+        </div>
+        <div class="table-responsive px-5">
+            <table class="table-styled">
+                <thead>
+                    <tr>
+                        <th>Technic Name</th>
+                        <th>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </th>
+                        <th>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="p-5">
+                    @foreach (var technic in Model.OrderBy(t => t.Name))
+                    {
+                        <tr>
+                            <td>@technic.Name</td>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td class="text-end">
+                                <a asp-controller="Technic" asp-action="Update" asp-route-id="@technic.Id" class="btn btn-outline-success me-2">Bewerk</a>
+                                <a asp-controller="Technic" asp-action="Delete" asp-route-id="@technic.Id" class="btn btn-outline-danger">Verwijder</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+                        

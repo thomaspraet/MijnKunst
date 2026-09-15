@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="MijnKunst.Business/MijnKunst.Business.csproj" Id="3a3c25fe-637d-47cb-8f65-ecb83201ef2c" />
+  <Project Path="MijnKunst.DataAccess/MijnKunst.DataAccess.csproj" Id="6facf2f4-6d21-4d81-b8e3-611f5f6b5f91" />
+  <Project Path="MijnKunst.Models/MijnKunst.Models.csproj" Id="9cf8d649-0d8a-41b5-a005-c2f3ab10ef2c" />
+  <Project Path="MijnKunst.Utilty/MijnKunst.Utilty.csproj" Id="6ef73cf0-7673-414a-aaee-f75ac75f690a" />
+  <Project Path="MijnKunst.web/MijnKunst.web.csproj" />
+</Solution>

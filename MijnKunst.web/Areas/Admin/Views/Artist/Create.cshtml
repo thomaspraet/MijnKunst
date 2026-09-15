@@ -1,0 +1,45 @@
+﻿@using MijnKunst.Models;
+@model Artist
+
+<div class="container px-5 py-4">
+
+    <div class="card border shadow-sm overflow-hidden">
+        <div class="card-header text-white py-3 px-4" style="background: linear-gradient(to right, #84b133, #515c6a, #dfe057);">
+            <h5 class="mb-0 fw-bold"><i class="bi bi-plus-lg me-2"></i>Maak nieuwe kunstenaar</h5>
+            <p class="mb-0 small" style="color: #FFF;">Voeg een nieuwe kunstenaar toe</p>
+        </div>
+        <div class="card-body px-5 p-4">
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold small">Voornaam</label>
+                    <input type="text" name="FirstName" asp-for="FirstName" class="form-control" />
+                    <span class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold small">Achternaam</label>
+                    <input type="text" name="LastName" asp-for="LastName" class="form-control" />
+                    <span class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold small">Geboorteplaats</label>
+                    <input type="text" name="PlaceOfBirth" asp-for="PlaceOfBirth" class="form-control" />
+                    <span class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold small">Geboortejaar</label>
+                    <input type="text" name="YearOfBirth" asp-for="YearOfBirth" class="form-control" />
+                    <span class="text-danger small"></span>
+                </div>
+
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-outline-success fw-semibold me-2">Maak kunstenaar aan</button>
+                    <a asp-controller="Artist" asp-action="Index" class="btn btn-outline-secondary fw-medium">Annuleer</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+ 
